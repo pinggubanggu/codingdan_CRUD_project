@@ -112,10 +112,18 @@
       <version>${spring-version}</version>
     </dependency>
 
+    <!-- SQL 로그 자세히,제대로 보기 위한 라이브러리 -->
     <dependency>
       <groupId>org.bgee.log4jdbc-log4j2</groupId>
       <artifactId>log4jdbc-log4j2-jdbc4</artifactId>
       <version>1.16</version>
+    </dependency>
+
+    <!-- JsonFormat -->
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-annotations</artifactId>
+      <version>2.12.3</version>
     </dependency>
 
     <!-- spring 추가적인 라이브러리 -->
