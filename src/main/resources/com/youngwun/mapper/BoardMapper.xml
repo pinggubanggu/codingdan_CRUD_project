@@ -24,6 +24,7 @@
 
         insert into tbl_board (bno, title, content, writer)
             values (#{bno}, #{title}, #{content}, #{writer})
+
     </insert>
 
     <select id="read" resultType="com.youngwun.domain.BoardVO">
