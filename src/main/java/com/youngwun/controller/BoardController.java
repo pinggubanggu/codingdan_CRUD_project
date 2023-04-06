@@ -21,10 +21,12 @@ public class BoardController {
     @Autowired
     private BoardService service;
 
-    @GetMapping("/list")
-    public void list(Model model) {
+    @RequestMapping(value = "/list")
+    public String list(Model model) {
         log.info("list");
         model.addAttribute("list", service.getList());
+
+        return "list";
     }
 
     @PostMapping("/register")
