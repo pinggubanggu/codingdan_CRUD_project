@@ -3,7 +3,6 @@ package com.youngwun.controller;
 import com.youngwun.domain.BoardVO;
 import com.youngwun.service.BoardService;
 import lombok.extern.log4j.Log4j;
-import oracle.jdbc.proxy.annotation.Post;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,7 +25,12 @@ public class BoardController {
         log.info("list");
         model.addAttribute("list", service.getList());
 
-        return "list";
+        return "board/list";
+    }
+
+    @GetMapping("/register")
+    public void register() {
+
     }
 
     @PostMapping("/register")
@@ -34,6 +38,7 @@ public class BoardController {
         log.info("register: " + board);
 
         service.register(board);
+        rttr.addFlashAttribute("testResult", "1");
         rttr.addFlashAttribute("result", board.getBno());
 
         return "redirect:/board/list";
