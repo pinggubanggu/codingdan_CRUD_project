@@ -1,6 +1,8 @@
 package com.youngwun.mapper;
 
 import com.youngwun.domain.BoardVO;
+import com.youngwun.domain.Criteria;
+import java.util.List;
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
 import org.junit.Test;
@@ -80,6 +82,20 @@ public class BoardMapperTests {
 
         //then
         log.info("UPDATE COUNT: " + updateCount);
+    }
+
+    @Test
+    public void testPaging() {
+        //given
+        Criteria cri = new Criteria();
+        cri.setPageNum(3);
+        cri.setAmount(10);
+
+        //when
+        List<BoardVO> list = mapper.getListWithPaging(cri);
+
+        //then
+        list.forEach(board -> log.info(board));
     }
 
 }

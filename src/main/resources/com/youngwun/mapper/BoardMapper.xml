@@ -43,4 +43,19 @@
             updateDate = SYSDATE
         where bno = #{bno}
     </update>
+
+    <select id="getListWithPaging" resultType="com.youngwun.domain.BoardVO">
+    <![CDATA[
+    SELECT
+      bno, title, content, writer, regdate, updatedate
+    FROM (
+            SELECT /*+ INDEX_DESC(TBL_BOARD TBL_BOARD_PK) */
+              rownum rn, bno, title, content, writer, regdate, updatedate
+            FROM
+              TBL_BOARD
+            WHERE ROWNUM <= #{pageNum} * #{amount}
+         )
+    WHERE rn > (#{pageNum} -1) * #{amount}
+    ]]>
+    </select>
 </mapper>

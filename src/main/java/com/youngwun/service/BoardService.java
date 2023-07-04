@@ -2,6 +2,7 @@ package com.youngwun.service;
 
 import com.youngwun.domain.BoardVO;
 
+import com.youngwun.domain.Criteria;
 import java.util.List;
 
 public interface BoardService {
@@ -14,6 +15,10 @@ public interface BoardService {
 
     public boolean remove(Long bno);
 
-    public List<BoardVO> getList();
+    // public List<BoardVO> getList();
+
+    public List<BoardVO> getList(Criteria cri);
+
+
 
 }

@@ -1,6 +1,7 @@
 package com.youngwun.controller;
 
 import com.youngwun.domain.BoardVO;
+import com.youngwun.domain.Criteria;
 import com.youngwun.service.BoardService;
 import lombok.extern.log4j.Log4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,17 +21,18 @@ public class BoardController {
     @Autowired
     private BoardService service;
 
-    @RequestMapping(value = "/list")
-    public String list(Model model) {
-        log.info("list");
-        model.addAttribute("list", service.getList());
+//    @RequestMapping(value = "/list")
+//    public String list(Model model) {
+//        log.info("list");
+//        model.addAttribute("list", service.getList());
+//
+//        return "board/list";
+//    }
 
-        return "board/list";
-    }
-
-    @GetMapping("/register")
-    public void register() {
-
+    @GetMapping
+    public void list(Criteria cri, Model model) {
+      log.info("list: " + cri);
+      model.addAttribute("list", service.getList(cri));
     }
 
     @PostMapping("/register")

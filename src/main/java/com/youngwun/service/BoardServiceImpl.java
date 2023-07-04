@@ -1,6 +1,7 @@
 package com.youngwun.service;
 
 import com.youngwun.domain.BoardVO;
+import com.youngwun.domain.Criteria;
 import com.youngwun.mapper.BoardMapper;
 import lombok.extern.log4j.Log4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,11 +46,18 @@ public class BoardServiceImpl implements BoardService{
         return mapper.delete(bno) == 1;
     }
 
+//    @Override
+//    public List<BoardVO> getList() {
+//
+//        log.info("getList.....");
+//
+//        return mapper.getList();
+//    }
+
     @Override
-    public List<BoardVO> getList() {
+    public List<BoardVO> getList(Criteria cri) {
+        log.info("get List with criteria: " + cri);
 
-        log.info("getList.....");
-
-        return mapper.getList();
+        return mapper.getListWithPaging(cri);
     }
 }
